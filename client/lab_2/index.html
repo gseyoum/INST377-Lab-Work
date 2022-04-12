@@ -1,60 +1,75 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>getahun seyoum lab 1</title>
-</head>
-<body>
-     <h1> Getahun Seyoum Lab 1: Intro to HTML</h1>
-     
-     <h2>First, the basics.</h2>
-     <p>You need the following to build your website.</p>
-        
-        <ul>  
-            <li>HTML and CSS</li>
-            <li>Javascript</li>
-            <li>Node.js</li>
-        </ul>
 
-     <p>You should list your top 5 albums below.</p> 
+<html>
+    <head>
+        <link rel = 'stylesheet' href= 'styles.css'/>
+        <title>Reno Yeung Lab 2</title>
+    
+    </head>
+    <body>
+    <div class = 'wrapper'>
+    <div class ='title'>
+        <h1>Reno Yeung Lab 2: CSS Selectors</h1>
+    </div>
+
+    <p></p>
+
+    <div>
+    <nav>
+    <a href = 'selectors.html'>Selectors</a> 
+    <a href = 'index.html'>Main Page</a>
+    </nav>
+    </div> 
+
+    <div class = 'subtitle'>
+        <h2>First, the basics.</h2>
+    </div>
+
+    <div class = 'section_1'>
+        
+        <ul>
+            <p>3 unordered list of elements</p>
+        </br>
+            <li>a</li>
+            <li>li</li>
+            <li>p</li>
+        </ul>  
+    
         
         <ol>
-            <li>Coloring Book by Chance the Rapper</li>
-            <li>Lemonade by Beyonce</li>
-            <li>The College Drop Out by Kanye West</li>
-            <li>Butterfly by Mariah Carey</li>
-            <li>Reasonable Doubt by Jay-Z</li>
+            <p>Top five favorite albums</p>
+        </br>
+            <li>Donda by Kanye West</li>
+            <li>Certified Lover Boy by Drake</li>
+            <li>Illuminate by Shawn Mendes</li>
+            <li>Summer Of Love by Shawn Mendes</li>
+            <li>Divide by Ed Sheeran</li>
         </ol>
-    
-     <h2>Let's Try Some Inline Elements</h2>
-    
-     <p>Sometimes you want to <em>draw attention to something</em> in a line of text.</p>
-    
-     <p>Sometimes you want to <strong>strongly emphasize something</strong> in the text.</p>
-    
-     <p>Sometimes you want to <em><strong>do both.</strong></em></P>
-    
-     <h2>Empty Elements</h2>
+    </div>
 
-     <p>Soft line breaks can't wrap anything. </br>
-        Neither can image tags, or hard lines.</br>
-        Add a hard line under here, and make sure you've used some soft line breaks to match your page to the sample.</p>
-     <hr/>
-     <h2>Images</h2>
+    <div class = 'section_2'>
+       <div class = 'subtitle'>
+        <h2>Lets Try Some Inline Elements</h2>
+    </div> 
+        <p>Use this to draw <em>attention</em> </p>
+        <p>Use to this give a <strong> impression </strong> </p>
+        <p> Or sometimes you want <em><strong> both </strong></em></p>
+    </div>
 
-     <p>Don't forget to use alt text on your images. </p>
+    <div class = 'section_3'>
+        <h2> Empty Elements </h2>
+        <p> Hello Professor, <br/> I have a question about VScode.... </p>
+        <hr/> 
+    </div>
 
-     <p>It's important for accessibility.</p>
-     
-     <img src='images/mochi.jpg' width='75' alt='A mochi ball in a bubble'/>
-     <img src='images/mochi.gif' width='75' alt='A dancing mochi ball'/>
-     <img src='images/mochi.png' width='75' alt='A mochi ball'/>
-     <img src='images/mochi.svg' alt='A mochi ball with Bézier handles'/>
-     <hr/>
-
-     <a href=https://github.com/gseyoum/INST377-Lab-Work/commit/fc6727cfbb90e3853c0cbb6deb0efb79866049b5
-           target='_blank'>Getahun's github repository for class</a></li>
-    
-</body>
+        <h2> Images </h2>
+    <div class = 'carousel'> 
+        <div class = 'slides'>
+            <img src='images/mochi.jpg' width='75' alt='A mochi ball in a bubble'/>
+            <img src='images/mochi.gif' width='75' alt='A dancing mochi ball'/>
+            <img src='images/mochi.png' width='75' alt='A mochi ball'/>
+            <img src='images/mochi.svg' alt='A mochi ball with Bézier handles'/>
+        </div>
+    </div>
+    </div>
+    </body>
 </html>
