@@ -9,6 +9,8 @@ function updateSlidePostion(){
         slide.classList.remove('carousel__item--visible');
         slide.classList.add('carousel__item--hidden');
     });
+    // for (const slide of slides){
+    //    }
     slides[slidePosition].classList.add('carousel__item--visible');
 }
 
