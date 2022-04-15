@@ -29,6 +29,7 @@ function moveToNextSlide(){
     } else{
         slidePosition++;
     }
+    updateSlidePostion();
 }
 
 function moveToPrevSlide() {
@@ -37,5 +38,5 @@ function moveToPrevSlide() {
     } else{
         slidePosition--;
     } 
-    updateSlidePostion()
+    updateSlidePostion();
 }
