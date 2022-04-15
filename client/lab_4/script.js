@@ -1,6 +1,7 @@
 let slidePosition = 0;
-const slides = document.querySelectorAll('carousel_item');
-const totalSlides = slides.length;
+const slides = document.querySelectorAll('.carousel_item');
+const slidesArray=Array.from(slides);
+const totalSlides = slidesArray.length;
 
 document.
     querySelector('#carousel_button--next')
