@@ -13,6 +13,7 @@ document.
     .addEventListener("click", function() {
         moveToPrevSlide();
     });
+
     function updateSlidePostion() {
         for(let slide of slides) {
             slide.classList.remove('carusel_item--visable');
@@ -23,22 +24,21 @@ document.
 
 
     function moveToNextSlide(){ 
-    updateSlidePostion();
+        updateSlidePostion();
 
-    if(slidePosition === totalSlides - 1) {
-        slidePosition = 0;
-    } else{
-        slidePosition++;
-    }
-    updateSlidePostion();
+        if(slidePosition === totalSlides - 1) {
+            slidePosition = 0;
+        } else{
+            slidePosition++;
+        }
     }
 
     function moveToPrevSlide() {
-        
-    if(slidePosition === 0){
+
+        if(slidePosition === 0){
         slidePosition = totalSlides - 1;
-    } else{
-        slidePosition--;
-    } 
-    updateSlidePostion();
-    }
+        } else{
+            slidePosition--;
+        } 
+     updateSlidePostion();
+        }   
