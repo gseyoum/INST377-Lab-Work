@@ -159,6 +159,10 @@
         border-radius: 5px;
     }
 
+    .carousel-button:hover{
+        background-color: orange;
+    }
+
     .prev{
         background-color: aqua;
     }
