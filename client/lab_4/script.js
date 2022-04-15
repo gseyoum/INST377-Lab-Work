@@ -4,22 +4,22 @@ const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
 document.
-    querySelector('#carousel_button--next')
+    querySelector('next')
     .addEventListener("click", function() {
         movetonextslide();
     });
 document.
-    querySelector('carousel_button--prev')
+    querySelector('prev')
     .addEventListener("click", function() {
         moveToPrevSlide();
     });
 
     function updateSlidePostion() {
         for(let slide of slides) {
-            slide.classList.remove('carusel_item--visable');
-            slide.classList.add('photo-grid-item--hidden');
+            slide.classList.remove('visable');
+            slide.classList.add('hidden');
         }
-        slides[slidePosition].classList.add('carousel_item--visale');
+        slides[slidePosition].classList.add('visable');
     }
 
 
