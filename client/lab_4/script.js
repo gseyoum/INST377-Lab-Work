@@ -4,13 +4,13 @@ const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
 document.
-    querySelector('next')
+    querySelector('.next')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
 
 document.
-    querySelector('prev')
+    querySelector('.prev')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
