@@ -25,20 +25,20 @@ document.
     }
 
 
-    function moveToNextSlide(){ 
-        if(slidePosition === totalSlides - 1) {
-            slidePosition = 0;
-        } else{
-            slidePosition++;
-        }
-        updateSlidePostion();
+function moveToNextSlide(){ 
+    if(slidePosition === totalSlides - 1) {
+        slidePosition = 0;
+    } else{
+        slidePosition++;
+    }
+    updateSlidePostion();
     }
 
-    function moveToPrevSlide() {
-        if(slidePosition === 0){
-            slidePosition = totalSlides - 1;
-        } else{
-            slidePosition--;
+function moveToPrevSlide() {
+    if(slidePosition === 0){
+        slidePosition = totalSlides - 1;
+    } else{
+        slidePosition--;
         } 
-        updateSlidePostion();
+    updateSlidePostion();
     }   
