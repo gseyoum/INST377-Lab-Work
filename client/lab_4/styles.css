@@ -36,7 +36,7 @@
         color: rgba(0,139, 139, 1);
       }
       
-    .wrapper {
+     .wrapper {
         display:flex;
         flex-direction: column;
         font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
@@ -96,13 +96,13 @@
         align-items: center; 
       }
     
-    .social,
-    .subscribe {
+        .social,
+        .subscribe {
       align-self: flex-end;
       margin-bottom: 20px;
-    }
+        }
     
-    .photo-grid-container{
+        .photo-grid-container{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -129,50 +129,48 @@
         height: 300px;
       }
     
-    .photo-grid-container .photo-visible{
-        display: block;
-    }
+     .photo-grid-container .photo-visible{
+            display: block;
+     }
     
-    .carousel{
-        display: flex;
-        overflow: hidden;
-        max-width: 600px;
-        position: relative;
-        align-items: center;
-    }
-    .carousel__item .carousel__item  
+        .carousel{
+            display: flex;
+            overflow: hidden;
+            max-width: 600px;
+            position: relative;
+            align-items: center;
+        }
+        .carousel__item .carousel__item  
     
-    .carousel .carousel__item--hidden{display: none;}
-
-    
+     .carousel .carousel__item--hidden{display: none;}
   
-    .carousel__item img {width: 100%; max-width: 600px; height:auto;}
-    .carousel__action {
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        top: 50%;
-        width: 100;
-    }
+        .carousel__item img {width: 100%; max-width: 600px; height:auto;}
+      .carousel__action {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100;
+        }
     
-    .carousel-button{
-        background-color: #5995DA;
-        height: 50px;
-        padding: 5px;
-        border-radius: 5px;
-    }
+     .carousel-button{
+            background-color: #5995DA;
+            height: 50px;
+            padding: 5px;
+            border-radius: 5px;
+        }
 
-    .carousel-button:hover{
-        background-color: orange;
-    }
+        .carousel-button:hover{
+            background-color: orange;
+        }
 
-    .prev{
-        background-color: aqua;
-    }
+        .prev{
+            background-color: aqua;
+        }
 
-    .next{
-        background-color: red;
-    }
+        .next{
+            background-color: red;
+        }
 
     .carousel .carousel__item--visible{display: block;}
 
