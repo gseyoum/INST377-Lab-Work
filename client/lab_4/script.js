@@ -10,8 +10,8 @@ function updateSlidePostion() {
         slide.classList.add('carousel__item--hidden');
     });
     // for (const slide of slide) {
-    // }
-    slides[slidePosition].classList.add('carousel__item--visable');
+        // }
+        slides[slidePosition].classList.add('carousel__item--visable');
 }
 
 function moveToNextSlide(){ 
@@ -28,18 +28,18 @@ function moveToPrevSlide() {
         slidePosition = totalSlides - 1;
     } else{
         slidePosition--;
-        } 
+    } 
     updateSlidePostion();
 }   
 
 document.querySelector('.next')
-    .addEventListener('click',() => {
-        console.log('clicked next');
-        moveToNextSlide();
+.addEventListener('click',() => {
+    console.log('clicked next');
+    moveToNextSlide();
 });
 
 document.querySelector('.prev')
-    .addEventListener('click',() => {
-        console.log('clicked prev');
-        moveToNextSlide();
+.addEventListener('click',() => {
+    console.log('clicked prev');
+    moveToNextSlide();
 });
