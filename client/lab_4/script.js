@@ -3,17 +3,6 @@ const slides = document.querySelectorAll('.carousel_item');
 const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
-document.
-    querySelector('next')
-    .addEventListener("click", function() {
-        movetonextslide();
-    });
-document.
-    querySelector('prev')
-    .addEventListener("click", function() {
-        moveToPrevSlide();
-    });
-
 function updateSlidePostion() {
     slidesArray.forEach((slide) => {
         console.log(slide);
@@ -24,21 +13,20 @@ function updateSlidePostion() {
 }
 
 
-    function moveToNextSlide(){ 
-        updateSlidePostion();
-
-        if(slidePosition === totalSlides - 1) {
-            slidePosition = 0;
-        } else{
-            slidePosition++;
-        }
+function moveToNextSlide(){ 
+    if(slidePosition === totalSlides - 1) {
+        slidePosition = 0;
+    } else{
+        slidePosition++;
     }
+    updateSlidePostion();
+}
 
-    function moveToPrevSlide() {
-        if(slidePosition === 0){
-            slidePosition = totalSlides - 1;
-        } else{
-            slidePosition--;
-        } 
-            updateSlidePostion();
-    }   
+function moveToPrevSlide() {
+    if(slidePosition === 0){
+        slidePosition = totalSlides - 1;
+    } else{
+        slidePosition--;
+    } 
+    updateSlidePostion();
+}   
