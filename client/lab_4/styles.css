@@ -175,7 +175,7 @@
     .carousel .carousel__item--visible{display: block;}
 
     .footer {
-        display: flex;
+         display: flex;
         justify-content: space-between;
     }
       
