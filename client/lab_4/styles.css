@@ -141,9 +141,9 @@
 }
 .carousel__item{}
 
-.carousel__item--hidden{display: none;}
+.hidden{display: none;}
 
-.carousel__item--visible{display: block;}
+.visible{display: block;}
 
 .carousel__item img {width: 100%; max-width: 600px; height:auto;}
 .carousel__action {
@@ -163,15 +163,15 @@
 
 .carousel-button:hover{
     background-color: orange;
-}
+    }
 
-.prev{
+    .prev{
     background-color: aqua;
-}
+    }
 
-.next{
+    .next{
     background-color: red;
-}
+    }
 
 
     .footer {
