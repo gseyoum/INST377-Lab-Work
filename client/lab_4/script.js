@@ -22,7 +22,7 @@ function moveToNextSlide(){
         slidePosition++;
     }
     updateSlidePostion();
-    }
+}
 
 function moveToPrevSlide() {
     if(slidePosition === 0){
@@ -31,7 +31,7 @@ function moveToPrevSlide() {
         slidePosition--;
         } 
     updateSlidePostion();
-    }   
+}   
 
 document.
     querySelector('.next')
