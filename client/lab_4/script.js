@@ -14,7 +14,6 @@ function updateSlidePostion() {
     slides[slidePosition].classList.add('carousel__item--visable');
 }
 
-
 function moveToNextSlide(){ 
     if(slidePosition === totalSlides - 1) {
         slidePosition = 0;
@@ -34,13 +33,13 @@ function moveToPrevSlide() {
 }   
 
 document.querySelector('.next')
-    .addEventListener('click',()=>{
+    .addEventListener('click',() => {
         console.log('clicked next');
         moveToNextSlide();
 });
 
 document.querySelector('.prev')
-    .addEventListener('click',()=>{
-        console.log('clicked preview');
+    .addEventListener('click',() => {
+        console.log('clicked prev');
         moveToNextSlide();
 });
