@@ -162,8 +162,8 @@
         .carousel-button{
             background-color: #5995DA;
             height: 50px;
-            padding: 5px;
             border-radius: 5px;
+            padding: 5px;
         }
 
         .carousel-button:hover{
