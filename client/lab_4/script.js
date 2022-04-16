@@ -4,17 +4,17 @@ const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
 document.
-    querySelector('carousel_button--next')
+    querySelector('carousel__button--next')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
 
 document.
-    querySelector('carousel_button--prev')
+    querySelector('carousel__button--prev')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
-    
+
 function updateSlidePostion() {
     slidesArray.forEach((slide) => {
         console.log(slide);
