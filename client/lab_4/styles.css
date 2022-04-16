@@ -132,6 +132,46 @@
      .photo-grid-container .photo-visible{
             display: block;
      }
+     .carousel{
+        display: flex;
+        overflow: hidden;
+        max-width: 600px;
+        position: relative;
+        align-items: center;
+    }
+    .carousel__item .carousel__item  
+
+    .carousel .carousel__item--hidden{display: none;}
+
+    .carousel__item img {width: 100%; max-width: 600px; height:auto;}
+    .carousel__action {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        width: 100;
+    }
+
+ .carousel-button{
+        background-color: #5995DA;
+        height: 50px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .carousel-button:hover{
+        background-color: orange;
+    }
+
+    .prev{
+        background-color: aqua;
+    }
+
+    .next{
+        background-color: red;
+    }
+
+.carousel .carousel__item--visible{display: block;}
 
         .footer {
          display: flex;
