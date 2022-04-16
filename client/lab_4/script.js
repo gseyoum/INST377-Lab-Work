@@ -3,6 +3,18 @@ const slides = document.querySelectorAll('.carousel_item');
 const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
+document.
+    querySelector('carousel_button--next')
+    .addEventListener('click',function(){
+        moveToNextSlide();
+    });
+
+document.
+    querySelector('carousel_button--prev')
+    .addEventListener('click',function(){
+        moveToNextSlide();
+    });
+    
 function updateSlidePostion() {
     slidesArray.forEach((slide) => {
         console.log(slide);
