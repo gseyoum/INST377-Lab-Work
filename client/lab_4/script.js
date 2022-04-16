@@ -1,5 +1,5 @@
 let slidePosition = 0;
-const slides = document.querySelectorAll('.carousel_item');
+const slides = document.querySelectorAll('.carousel__item');
 const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
