@@ -4,13 +4,13 @@ const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
 document.
-    querySelector('carousel__button--next')
+    querySelector('next')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
 
 document.
-    querySelector('carousel__button--prev')
+    querySelector('prev')
     .addEventListener('click',function(){
         moveToNextSlide();
     });
@@ -18,10 +18,10 @@ document.
     function updateSlidePostion() {
         slidesArray.forEach((slide) => {
             console.log(slide);
-            slide.classList.remove('carousel__item--visable');
-            slide.classList.add('carousel__item--hidden');
+            slide.classList.remove('visable');
+            slide.classList.add('hidden');
         });
-        slides[slidePosition].classList.add('carousel__item--visable');
+        slides[slidePosition].classList.add('visable');
     }
 
 
