@@ -33,14 +33,14 @@ function moveToPrevSlide() {
     updateSlidePostion();
 }   
 
-document.
-    querySelector('.next')
-    .addEventListener('click',function(){
+document.querySelector('.next')
+    .addEventListener('click',()=>{
+        console.log('clicked next');
         moveToNextSlide();
-    });
+});
 
-document.
-    querySelector('.prev')
-    .addEventListener('click',function(){
+document.querySelector('.prev')
+    .addEventListener('click',()=>{
+        console.log('clicked preview');
         moveToNextSlide();
-    });
+});
