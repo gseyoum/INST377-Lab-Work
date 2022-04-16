@@ -15,13 +15,13 @@ document.
         moveToNextSlide();
     });
 
-    function updateSlidePostion() {
-        slidesArray.forEach((slide) => {
-            console.log(slide);
-            slide.classList.remove('visable');
-            slide.classList.add('hidden');
-        });
-        slides[slidePosition].classList.add('visable');
+function updateSlidePostion() {
+    slidesArray.forEach((slide) => {
+        console.log(slide);
+        slide.classList.remove('visable');
+        slide.classList.add('hidden');
+    });
+    slides[slidePosition].classList.add('visable');
     }
 
 
