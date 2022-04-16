@@ -15,30 +15,30 @@ document.
         moveToNextSlide();
     });
 
-function updateSlidePostion() {
-    slidesArray.forEach((slide) => {
-        console.log(slide);
-        slide.classList.remove('carousel__item--visable');
-        slide.classList.add('carousel__item--hidden');
-    });
-    slides[slidePosition].classList.add('carousel__item--visable');
-}
-
-
-function moveToNextSlide(){ 
-    if(slidePosition === totalSlides - 1) {
-        slidePosition = 0;
-    } else{
-        slidePosition++;
+    function updateSlidePostion() {
+        slidesArray.forEach((slide) => {
+            console.log(slide);
+            slide.classList.remove('carousel__item--visable');
+            slide.classList.add('carousel__item--hidden');
+        });
+        slides[slidePosition].classList.add('carousel__item--visable');
     }
-    updateSlidePostion();
-}
 
-function moveToPrevSlide() {
-    if(slidePosition === 0){
-        slidePosition = totalSlides - 1;
-    } else{
-        slidePosition--;
-    } 
-    updateSlidePostion();
-}   
+
+    function moveToNextSlide(){ 
+        if(slidePosition === totalSlides - 1) {
+            slidePosition = 0;
+        } else{
+            slidePosition++;
+        }
+        updateSlidePostion();
+    }
+
+    function moveToPrevSlide() {
+        if(slidePosition === 0){
+            slidePosition = totalSlides - 1;
+        } else{
+            slidePosition--;
+        } 
+        updateSlidePostion();
+    }   
