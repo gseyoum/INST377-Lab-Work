@@ -143,12 +143,9 @@ nav a {
 }
 
 .carousel__item{}
-
 .carousel__item--hidden{display: none;}
-
 .carousel__item--visible{display: block;}
-
-.carousel__item img {
+.carousel__item {
     width: 100%; 
     max-width: 600px; 
     height:auto;
@@ -163,7 +160,7 @@ nav a {
 }
 
 .carousel-button{
-    background-color: #5995DA;
+    background-color: blue;
     height: 50px;
     border-radius: 5px;
     padding: 5px;
