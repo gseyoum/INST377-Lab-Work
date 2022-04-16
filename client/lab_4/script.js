@@ -3,25 +3,15 @@ const slides = document.querySelectorAll('.carousel__item');
 const slidesArray=Array.from(slides);
 const totalSlides = slidesArray.length;
 
-document.
-    querySelector('.next')
-    .addEventListener('click',function(){
-        moveToNextSlide();
-    });
-
-document.
-    querySelector('.prev')
-    .addEventListener('click',function(){
-        moveToNextSlide();
-    });
-
 function updateSlidePostion() {
     slidesArray.forEach((slide) => {
         console.log(slide);
-        slide.classList.remove('visable');
-        slide.classList.add('hidden');
+        slide.classList.remove('carousel__item--visable');
+        slide.classList.add('carousel__item--hidden');
     });
-    slides[slidePosition].classList.add('visable');
+    // for (const slide of slide) {
+    // }
+    slides[slidePosition].classList.add('carousel__item--visable');
     }
 
 
@@ -42,3 +32,15 @@ function moveToPrevSlide() {
         } 
     updateSlidePostion();
     }   
+
+document.
+    querySelector('.next')
+    .addEventListener('click',function(){
+        moveToNextSlide();
+    });
+
+document.
+    querySelector('.prev')
+    .addEventListener('click',function(){
+        moveToNextSlide();
+    });
