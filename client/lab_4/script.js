@@ -19,9 +19,9 @@ function updateSlidePostion() {
         console.log(slide);
         slide.classList.remove('carousel__item--visable');
         slide.classList.add('carousel__item--hidden');
-        });
-        slides[slidePosition].classList.add('carousel__item--visable');
-    }
+    });
+    slides[slidePosition].classList.add('carousel__item--visable');
+}
 
 
     function moveToNextSlide(){ 
