@@ -12,7 +12,7 @@ function updateSlidePostion() {
     // for (const slide of slide) {
     // }
     slides[slidePosition].classList.add('carousel__item--visable');
-    }
+}
 
 
 function moveToNextSlide(){ 
