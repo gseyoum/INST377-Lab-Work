@@ -6,53 +6,31 @@
     <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel = "stylesheet" href= "./styles.css"/>
 </head>
+
 <body>  
-    <div class = 'columns'>
-        <div class = 'column is-10 is-offset-1'>
-            <div class = 'container'>
-                <div class = 'box'>
-                    <h1>Getahun Seyoum Lab 5: HTML Forms, CSS Frameworks, HTTP Methods</h1>
+    <div class = 'wrapper'>
+        <div class="header">Getahun Seyoum Lab 5: HTML Forms, CSS Frameworks, HTTP Methods</div>
+        <div class="container">
+            <div class="columns">
+                <div class="page_items">
+                    <form actions="/api/foodServicesPG" class="main_form">
+                        <div class="form_item">
+                            <label for="fname">First Name</label>
+                            <input type="text" name="fname" id="fname">
+                        </div>
+
+                        <div class="form_item">
+                            <label for ="pref">Food Preference</label>
+                            <input type="text" name="pref" id="'pref">
+                        </div>
+                        <button class="button" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="page_item">
                 </div>
             </div>
-    </div>
-    
-</div>
-<form action= '/api' method = 'get' class = 'columns is-vcentered'>
-    <div class="column is-narrow is-offset-2">
-        <div class = 'box' style='width: 200px'>
-            <div class = 'container'>
-        <label for = 'first-name'>First Name</label><br>
-        <input id = 'first-name' name ='first name' type = 'text'/><br>
-        <label for = 'food'>Food Preference</label><br>
-        <input id = 'food' food ='food type' type = 'text'/>
-            </div>
-
-    <fieldset>
-        <div class = 'container'>
-        <legend>Veggie or Vegan?</legend>
-        <input id = 'type-1'
-        name = 'type'
-        type = 'radio'
-        value= 'Yes' />
-        <label for = 'type-1' class = 'radio-label'>Yes</label>
-        <input id = 'type-2'
-        name = 'type'
-        type = 'radio'
-        value= 'No' />
-        <label for = 'type-2' class = 'radio-label'>No</label>
-    </div>
-    </fieldset>
-
-    <div class ='container'>
-        <button>Submit</button>
-    </div>
-    </div>
-    </div>
-    <div class = 'column is-6'>
-        <div class = 'box'>
-            <p>This is going to be something in two weeks</p>
         </div>
     </div>
-</form>
+    <script src="./script.js"></script>
 </body>
 </html>

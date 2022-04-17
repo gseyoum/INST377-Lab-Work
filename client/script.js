@@ -2,7 +2,7 @@ const targetList = document.querySelector("tbody");
 const targetBox = document.querySelector(".tile");
 
 async function populateMacros() {
-  const customRequest = await fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+  const customRequest = await fetch("/api/table/data");
   const macrosData = await customRequest.json();
 
   macrosData.forEach((meal) => {
@@ -22,12 +22,12 @@ async function populateMacros() {
 
 //  This function fetches all dining halls and then populates the neraby restaurants on the home page
 async function populateRestaurants() {
-  const diningRequest = await fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json");
+  const diningRequest = await fetch("/api/dining");
   const diningData = await diningRequest.json();
 
   diningData["data"].forEach((restaurant) => {
     const appendItem = document.createElement("div");
-    appendItem.classList.add("tile", 'has-text-centered', "is-parent", "is-3");
+    appendItem.classList.add("tile", "has-text-centered", "is-parent", "is-3");
     appendItem.innerHTML = `
     <article class="tile is-child box has-background-link-dark ">
     <span class="subtitle has-text-light has-text-weight-bold">${
