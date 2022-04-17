@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function dataHandler(dataarray) {}
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
