@@ -2,7 +2,7 @@ const targetList = document.querySelector("tbody");
 const targetBox = document.querySelector(".tile");
 
 async function populateMacros() {
-  const customRequest = await fetch("/api/table/data");
+  const customRequest = await fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
   const macrosData = await customRequest.json();
 
   macrosData.forEach((meal) => {
@@ -27,7 +27,7 @@ async function populateRestaurants() {
 
   diningData["data"].forEach((restaurant) => {
     const appendItem = document.createElement("div");
-    appendItem.classList.add("tile", "has-text-centered", "is-parent", "is-3");
+    appendItem.classList.add("tile", 'has-text-centered', "is-parent", "is-3");
     appendItem.innerHTML = `
     <article class="tile is-child box has-background-link-dark ">
     <span class="subtitle has-text-light has-text-weight-bold">${
