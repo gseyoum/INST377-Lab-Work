@@ -52,6 +52,12 @@ body {
   background-color: #efefef;
 }
 
+.form_item{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin:5px
+}
 .container button{
   background-color: orange;
   font-weight: bold;
