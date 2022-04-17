@@ -31,6 +31,21 @@ body {
   margin-top: 25px;
 }
 
+.header {
+  display: block;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: hsl(48, 100%, 67%);
+}
+
+.page_item{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #efefef;
+}
+
 .container button{
   background-color: orange;
   font-weight: bold;
