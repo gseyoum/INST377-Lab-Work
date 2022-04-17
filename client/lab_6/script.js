@@ -1,6 +1,4 @@
-function dataHandler(dataarray){
-
-}
+function dataHandler(dataarray) {}
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
