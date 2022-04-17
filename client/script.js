@@ -22,7 +22,7 @@ async function populateMacros() {
 
 //  This function fetches all dining halls and then populates the neraby restaurants on the home page
 async function populateRestaurants() {
-  const diningRequest = await fetch("/api/dining");
+  const diningRequest = await fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json");
   const diningData = await diningRequest.json();
 
   diningData["data"].forEach((restaurant) => {
