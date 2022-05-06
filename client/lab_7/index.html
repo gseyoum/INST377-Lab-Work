@@ -1,70 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Getahun Seyoum's Lab 7 - Map Markers</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body class="p-3">
-    <div class="notification is-warning">
-      Getahun Seyoum's Lab 7
-    </div>
-    <div class="columns is-centered is-desktop">
-      <div class="column is-4">
-        <form class="box" method="" action="" id="search-form">
-          <div class="field">
-            <label class="label">Search Term</label>
-            <div class="control">
-              <input name="search_term" class="input" type="text" id="search-term">
-            </div>
-          </div>
+</head>
+<body>
+    <div class="wrapper"></div>
+        <div class="header"> Getahun Seyoum's Lab 7</div>
+        <div class="container">
+             <div class="columns">
+                <div class="page_item">
+                    <form class="main_form">
+                        <div class="form_item">
+                            <label for="resto_name">Restaurant Name</label>
+                            <input type="text" name="resto_name" id="resto_name">
+                        </div>
+                
+                        <div class="form_item">
+                            <label for="zipcode">Zipcode</label>
+                            <input type="text" name="zipcode" id="zipcode">
+                        </div>
+                        <div class="legacy-form-row">
+                            <legend>Veggie or Vegan?</legend>
+                        <input id='yes' name='answer' type='radio' value='yes' />
+                        <label for='yes' class='radio-label'>Yes</label>
+                        <input id='no' name='answer' type='radio' value='no'/> 
+                        <label for='no' class='radio-label'>No</label>
+                      </div>
 
-          <div class="field">
-            <label class="label">By</label>
-            <div class="control">
-              <label class="radio">
-                <input type="radio" name="search_type" value="zip" checked>
-                Zip Code
-              </label>
-            </div>
-          </div>
-        </form>
-        <div class="card">
-          <div class="card-content">
-            <h3 class="title is-4">Restaurant Search Results</h3>
-
-            <div class="notification is-warning my-0" id="no-results">
-                Enter the zip code to find your desired Restaurant.
-            </div>
-
-            <div class="table-container">
-              <table class="table is-hidden is-fullwidth is-size-7" id="result-table">
-                  <thead>
-                    <tr>
-                      <th>Restaurant Name</th>
-                      <th>Address</th>
-                      <th>City, State</th>
-                    </tr>
-                  </thead>
-                  <tbody id="result-table-results"></tbody>
-              </table>
-            </div>
-          </div>
+                        <button class="button submit_button" type="submit">Load List</button> 
+                    </form>
+                 </div>
+                 <div class="page_item">
+                    <h2>Restaurants List</h2>
+                    <ul class="resto-list"></ul>
+                </div>
+            </div> 
         </div>
-      </div>
-      <div class="column is-8">
-        <div class="card">
-          <div class="card-content">
-            <h3 class="title is-3">Location</h3>
-
-            <div id="result-map"></div>
-          </div>
-        </div>
-      </div>
     </div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
