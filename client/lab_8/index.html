@@ -1,47 +1,58 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8'/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Getahun Seyoum Lab: 8</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-        <link rel='stylesheet' href='styles.css'/>
-    </head>
-    <body>
-        <div class="wrapper">
-            <div class="container">
-                <div class="header">Getahun Seyoum Lab: 8</div>
-                <div class="columns">
-                    <div class="page_item">
-                        <form class='main_form'>
-                            <div class="form_item">
-                                <label for='resto_name'>Restaurant Name</label>
-                                <input id='resto_name' name='resto_name' type='text'/>
-                            </div>
-                            <div class="form_item">
-                                <label for='zipcode'>Zipcode</label>
-                                <input id='zipcode' name='zipcode' type='text'/>
-                            </div>
-                            <button class="button submit_button" type="submit">Load List</button>
-                            <!--<button class="button" id="refresh_list" type="submit">Refresh List</button>-->
-
-                        </form>
-                    </div>
-                    <div class="page_item page_item_wide">
-                        <div id="map"></div>
-                        <h2>Restaurant List</h2>
-                        <ul class="resto-list"></ul>
-                    </div>
-                </div>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lab 8 - JSON to Map Markers</title>
+    <!--Q4-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!--Q5-->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="p-3">
+    <div class="notification is-warning">
+      Bryan Barnes - Lab 8
+    </div>
+    <div class="columns is-centered is-vcentered">
+        <div class="column is-one-quarter">
+        <form class="box" method="GET" action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" >
+          <div class="field">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input name="first_name" class="input" type="text">
             </div>
+          </div>
+          <div class="field">
+            <label class="label">Food Preference</label>
+            <div class="control">
+              <input name="food_pref" class="input" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Veggie or Vegan?</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="veggie">
+                Yes
+              </label>
+              <label class="radio">
+                <input type="radio" name="vegan">
+                No
+              </label>
+            </div>
+          </div>
+          <button class="button is-primary">Submit</button>
+      </form>
+      </div>
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+              This is going to be something in two weeks! unfinished
+            </div>
+          </div>
         </div>
-        <script src='script.js'></script>
-    </body>
+      </div>
+    </div>
+    <script src ="js/script.js"></script>
+  </body>
 </html>
