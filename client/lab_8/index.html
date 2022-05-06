@@ -1,55 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getahun Seyoum's Lab 8</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="wrapper"></div>
-        <div class="header"> Getahun Seyoum's Lab 8</div>
-        <div class="container">
-             <div class="columns">
-                <div class="page_item">
-                    <form class="main_form">
-                        <div class="form_item">
-                            <label for="resto_name">Restaurant Name</label>
-                            <input type="text" name="resto_name" id="resto_name">
-                        </div>
-                
-                        <div class="form_item">
-                            <label for="zipcode">Zipcode</label>
-                            <input type="text" name="zipcode" id="zipcode">
-                        </div>
-                        
-                        <div class="legacy-form-row">
-                            <legend>Veggie or Vegan?</legend>
-                        <input id='yes' name='answer' type='radio' value='yes' />
-                        <label for='yes' class='radio-label'>Yes</label>
-                        <input id='no' name='answer' type='radio' value='no'/> 
-                        <label for='no' class='radio-label'>No</label>
-                      </div>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chandra Tamang Lab: 8</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <link rel='stylesheet' href='styles.css'/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class="header">Chandra Tamang Lab: 8</div>
+                <div class="columns">
+                    <div class="page_item">
+                        <form class='main_form'>
+                            <div class="form_item">
+                                <label for='resto_name'>Restaurant Name</label>
+                                <input id='resto_name' name='resto_name' type='text'/>
+                            </div>
+                            <div class="form_item">
+                                <label for='zipcode'>Zipcode</label>
+                                <input id='zipcode' name='zipcode' type='text'/>
+                            </div>
+                            <button class="button submit_button" type="submit">Load List</button>
+                            <!--<button class="button" id="refresh_list" type="submit">Refresh List</button>-->
 
-                      <button class="button submit_button" type="submit">Load List</button>
-                    </form>
-                 </div>
-                 <div class="page_item page_item_wide">
-                    <div id="map"></div>
-                    <h2>Restaurants List</h2>
-                    <ul class="resto-list"></ul>
+                        </form>
+                    </div>
+                    <div class="page_item page_item_wide">
+                        <div id="map"></div>
+                        <h2>Restaurant List</h2>
+                        <ul class="resto-list"></ul>
+                    </div>
                 </div>
-            </div> 
+            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+        <script src='script.js'></script>
+    </body>
 </html>
