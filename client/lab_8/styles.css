@@ -7,84 +7,90 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
-    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-  background-color: darkslategray;
+  color: #4a4a4a;
+  background-color: rgb(67, 165, 165); 
+  font-family:  ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+  ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#map { height: 360px; }
+map { height: 180px; }
 
 /* Page Layout */
 .columns {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
+
+.row{
+  display: flex;
+}
+
 .wrapper {
   display: flex;
 }
-/*^ used for forms */
+
 .container {
   max-width: 960px;
   margin-top: 25px;
-
-
-
-  padding: 40px;
 }
 
-
-.grid {
-  display: grid;
-  place-items: center;
-} 
-
-.speaker-form-header {
-  background-color: #d0dfc8;
+.selection-form-header {
+  text-align: left;
+  background-color: #F6F7F8;
   border: 1px solid #D6D9DC;
-  border-radius: 3px;
-  
-  width: 100%;
-  margin: 20px 0;
-  padding: 20px;
-}
-
-.speaker-form-header p {
-  /*text-align: left;*/
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.speaker-form-header-text {
-  display: flex;
-  
-  background-color: #FFFFFF;
-  border: 1px solid #D6D9DC;
-  border-radius: 3px;
-  padding: 20px;
-  
-}
-
-.page_item_wide {
-  width: 640px;
-}
-
-.speaker-form {
-  background-color: #FFFFFF;
-  border: 1px solid #D6D9DC;
-  border-radius: 3px;
+  border-radius: 25px; 
+  width: 80%;
+  margin: 40px 0;
   padding: 50px;
-  height:fit-content;
 }
 
 .form-row {
+  border-radius: 25px;
   margin-bottom: 40px;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 
-.form-row input[type='text'] {
+.page_item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #efefef;
+  align-self: center;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.selection-form-header h1 {
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+.selection-form {
+  background-color: #F6F7F8;
+  border: 1px solid #D6D9DC;
+  border-radius: 25px;
+  
+  padding: 50px;
+  margin: 0 0 40px 0;
+}
+
+.form-row label {
+  margin-bottom: 15px;
+}
+
+.form-row input[type='text'],
+.form-row input[type='text']  {
   background-color: #FFFFFF;
   border: 1px solid #D6D9DC;
   border-radius: 3px;
@@ -93,57 +99,16 @@ body {
   font-size: 14px;
 }
 
-.form-row label {
-  margin-bottom: 15px;
+.legacy-form-row {
+  border: none;
+  margin-bottom: 40px;
+  margin-left: 20px;
 }
-
-
-
-
-
-
-@media only screen and (min-width: 700px) {
-  .speaker-form-header {
-    width: 90%;
-  
-  }
-
-  .speaker-form {
-    width: 60%;
-  }
-  
-  .form-row {
-    flex-direction: row;
-    margin-bottom: 10px;
-  }
-  .form-row input[type='text'] {
-    width: 250px;
-    height: initial;
-  }
-  .form-row label {
-    margin-top: 7px;
-  }
-  .legacy-form-row {
-    margin-bottom: 10px;
-  }
- 
-  .form-row button {
-    align-items: flex-start;
-  }
-
-  .speaker-form-header-text {
-    display: flex;
-  }
-
-}
-
-
-
-
 
 .legacy-form-row {
   border: none;
   margin-bottom: 40px;
+  margin-left: 20px;
 }
 
 .legacy-form-row legend {
@@ -159,32 +124,32 @@ body {
 .legacy-form-row input[type='radio'] {
   margin-top: 2px;
 }
-  
+
 .legacy-form-row .radio-label,
 .legacy-form-row input[type='radio'] {
   float: left;
 }
 
-.form-row select {
+.form-row {
+  align-items: flex-start; /* To avoid stretching */
+  margin-bottom: 10px;
+  border-radius: 25px;
   width: 100%;
-  padding: 5px;
-  font-size: 14px;            /* This won't work in Chrome or Safari */
-  -webkit-appearance: none;   /* This will make it work */
+  padding: 20px;
+  background-color: #FFFFFF;
 }
 
 .form-row button {
-  width: 100px;
-
   font-size: 16px;
   font-weight: bold;
 
   color: #FFFFFF;
-  background-color: #d0dfc8;
+  background-color: #5995DA;
 
   border: none;
   border-radius: 3px;
 
-  padding: 10px 20px;
+  padding: 10px 25px;
   cursor: pointer;
 }
 
@@ -196,3 +161,17 @@ body {
   background-color: #407FC7;
 }
 
+.form-row button:hover {
+  background-color: #76AEED;
+}
+
+.form-row button:active {
+  background-color: #407FC7;
+}
+
+
+@media only screen and (min-width: 700px) {
+
+
+
+}
