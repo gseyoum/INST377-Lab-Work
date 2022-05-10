@@ -1,80 +1,60 @@
 <!DOCTYPE html>
 <html lang='en'>
+
   <head>
     <meta charset='UTF-8'/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 8</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
     <link rel='stylesheet' href='styles.css'/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
   </head>
-  <body>
-      
-      <div class = "grid">
-    <header class='speaker-form-header'>
-      <p>Getahun Seyoum's Lab 8</p>
-    </header>
-</div>
 
-<!-- added grid underneath -->
-<div class = "grid wrapper">
-<div class="columns">
-<div class="grid container">
-    <form method='get' class='speaker-form'>
-       <!-- <div class = "grid"> -->
-        <div class='form-row'>
-            <label for='resto_name'>Restaurant Name</label>
-            <input id='resto_name' name='resto_name' type='text'/>
-        </div>
-            <div class='form-row'>
+
+
+  <body>
+    <header class='selection-form-header'>
+      <h1>Getahun Seyoum's Lab 8</h1>
+    </header>
+
+    <div class = "row">
+      <div class = "column">
+        <form method='get' class='selection-form'>
+          <div class='form-item'>
+            <label for='name'>Name</label>
+            <input id='name' name='name' type='text'/>
+
+            <label for='food'>Food Preference</label>
+            <input id='food' name='food' type='text'/>
+
             <label for='zipcode'>Zipcode</label>
-            <input id='zipcode' name='zipcode' type='text'/>
+            <input id='zipcode' name='zipcode' type='zipcode'/>
           </div>
-          
-          
           <fieldset class='legacy-form-row'>
             <legend>Veggie or Vegan?</legend>
-            <input id='talk-type-1'
-                   name='talk-type'
-                   type='radio'
-                   value='Yes' />
-            <label for='talk-type-1' class='radio-label'>Yes</label>
-            <input id='talk-type-2'
-                   name='talk-type'
-                   type='radio'
-                   value='No'
-                    />
-            <label for='talk-type-2' class='radio-label'>No</label>
-          </fieldset>
-
-          <div class='form-row submit_button'>
-            <button>Load List</button>
-          </div>
-       
-
-
-    </form>
-    </div>
-
-  
-    <div class="wrapper grid container">
-    <header class='speaker-form-header-text'>
-        <div class="page_item_wide">
-        <div id="map"></div>
-        <h3>Restaurant List</h3>
+            <input id='vegYes'
+                  name='veg'
+                  type='radio'
+                  value='isVeg' />
+            <label for='vegYes' class='radio-label'>Yes</label>
+            <input id='vegNo'
+                  name='veg'
+                  type='radio'
+                  value='notVeg'
+                  checked />
+            <label for='vegNo' class='radio-label'>No</label>
+          </fieldset>  
+            <div class='form-item' type ="submit">
+              <button class = "button submit_button" type="submit">Change Resturants</button>
+            </div> 
+        </form>
+      </div>
+      <div class = "column">
+        <div class = 'form-row'>
+          <ul class="resto-list"></ul>
         </div>
-        <ul class = 'resto-list'></ul>
-      </header>
+      </div>
     </div>
- 
-
-    </div>
-</div>
-
-<script src="script.js"></script>
+    <div id="map">Map</div>
+    <script src='script.js'></script>
   </body>
 </html>
