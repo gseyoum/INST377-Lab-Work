@@ -4,31 +4,9 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: white;
-}
-
-.top_box {
-  width: 100%;
-  background-color: lightblue;
-  padding: 30px;
-  margin: 0 auto;
-  border-radius: 3px;
-}
-
-.left_box {
-  background-color: lightblue;
-  padding: 50px;
-  margin: 12px;
-  border-radius: 3px;
-}
-
-.right_box {
-  background-color: white;
-  padding: 30px 150px;
-  margin: 24px;
-  border-radius: 3px;
-  width: 640px;
+html{
+  min-height: 100%;
+  background-color: darkslategray
 }
 
 body {
@@ -36,7 +14,7 @@ body {
   padding: 0;
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
- 
+  background-color: darkslategray;
 }
 
 #map { height: 360px; }
@@ -45,47 +23,51 @@ body {
 .columns {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 
 .wrapper {
   display: flex;
 }
+
 .container {
   max-width: 960px;
   margin-top: 25px;
+  margin: auto;
+}
+
+.title {
+  background-color: hsl(44, 100%, 77%);
+  width: 100%;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 25px;
+}
+
+#form{
+  background-color: rgb(221, 225, 226);
+  min-width: 250px;
+  border-radius: 4px;
+  padding: 15px;
+  margin-left: 50px;
+}
+
+.radio {
+  display: block;
+  margin-bottom: 5px;
 }
 
 .button {
-  display: flex;
-  left: 20px;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  font-size: 16px;
-  color: gold;
-  background-color: whitesmoke;
+  background-color: #7ec9ac;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
-.field {
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
+.columns{
+  align-items: center;
+  justify-content: center;
 }
 
-.label {
-  margin-bottom: 8px;
-}
-
-.head2 {
-  display: flex;
-  justify-content: flex-start;
-  font-weight: bold;
+#third_box{
+  margin-left: 50px;
 }
