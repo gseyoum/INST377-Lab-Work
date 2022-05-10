@@ -1,38 +1,64 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable max-len */
+/* eslint-disable no-const-assign */
+/* eslint-disable array-callback-return */
+/* eslint-disable arrow-body-style */
+/* eslint-disable prefer-const */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-template-curly-in-string */
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(
-    Math.random() * (newMax - newMin + 1) + newMin
-  ); // The maximum is inclusive and the minimum is inclusive
-}
-
-function restoArrayMake(dataArray) {
+let randArray = [];
+function dataHandler(array) {
+  // console.table(array);
   const range = [...Array(15).keys()];
+  // sets a random list of restaurant names
   const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-
-    return dataArray[restNum];
+    const randNum = randomize(0, array.length - 1);
+    return array[randNum];
   });
-
   return listItems;
 }
 
-function createHtmlList(collection) {
-  const targetList = document.querySelector('#resto-list');
-  targetList.innerHTML = '';
-  collection.forEach((item) => {
-    const {name} = item;
-    const displayName = name.toLowerCase();
-    const injectThisItem = `<li>${displayName}</li>`;
-    targetList.innerHTML += injectThisItem;
+// injects the random array into the list
+function injectRandRestList(array) {
+  document.querySelector('.resto-list').innerHTML = '';
+  array.forEach((item) => {
+    const restName = item.name.toLowerCase();
+    const restZipCode = item.zip;
+    const injectRestName = `<li>${restName}</li>`;
+    const injectZipCode = `<li class = 'li-zip'>${restZipCode}</li>`;
+    document.querySelector('.resto-list').innerHTML += injectRestName;
+    document.querySelector('.resto-list').innerHTML += injectZipCode;
   });
 }
 
-function initMap(targetId) {
-  const latLong = [38.785, -76.8721];
-  const map = L.map(targetId).setView(latLong, 13);
+// function that randomizes given a min and a max
+function randomize(min, max) {
+  minimum = Math.ceil(min);
+  maximum = Math.floor(max);
+  return Math.floor(
+    Math.random() * (maximum - minimum + 1) + min
+  );
+}
+
+// marks the restaurants on our current map
+function markerPlace(map, collection) {
+  console.log('fires map markers');
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+  collection.forEach(item => {
+    const point = item.geocoded_column_1?.coordinates;
+    let restCordinates = [point[1], point[0]]; // Transverses the coordinates of each restaurant
+    console.log(restCordinates);
+    L.marker(restCordinates).addTo(map);
+  });
+}
+
+// Crreates Map
+function initMap() {
+  const map = L.map('map').setView([38.9897, -76.9378], 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -44,94 +70,82 @@ function initMap(targetId) {
   return map;
 }
 
-function addMapMarkers(map, collection) {
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.remove();
-    }
-  });
-
-  collection.forEach((item) => {
-    const point = item.geocoded_column_1?.coordinates;
-    console.log(item.geocoded_column_1?.coordinates);
-    L.marker([point[1], point[0]]).addTo(map);
-  });
-}
-
-// As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
-  console.log('script loaded'); // substituting for a 'breakpoint'
-  const form = document.querySelector('.main_form');
-  const submit = document.querySelector('.submit_button');
+  const form = document.querySelector('.user-form');
+  const submitButton = document.querySelector('button');
 
-  const resto = document.querySelector('#resto_name');
-  const zipcode = document.querySelector('#zipcode');
-  const map = initMap('map');
-  const retrievalVar = 'restaurants';
-  submit.style.display = 'none';
+  const restNameInput = document.querySelector('#rest-name');
+  const zipCodeInput = document.querySelector('#zip-code');
+  let restVar = 'restaurants';
+  const pageMap = initMap();
+  submitButton.style.display = 'none';
 
-  if (localStorage.getItem(retrievalVar) === null) {
-    const results = await fetch('/api/foodServicesPG');
-    const arrayFromJson = await results.json();
-    console.log(arrayFromJson);
-    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+  // if we dont have the data stored in our browser we load the data from the API
+  if (localStorage.getItem(restVar) === null) { // was set as 'undefined' beforre but did not work
+    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'); // This accesses some data from our API
+    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+    localStorage.setItem(restVar, JSON.stringify(arrayFromJson)); // Accesses and stores the loaded data locally
+    console.log('fires localStorage');
   }
-
-  const storedDataString = localStorage.getItem(retrievalVar);
-  const storedDataArray = JSON.parse(storedDataString);
+  // if we do have our data stored on ourr browser we can just grab it
+  const storedDataString = localStorage.getItem(restVar); // Reads the stored data and returns it
+  const storedDataArray = JSON.parse(storedDataString); // Converts the stored data to an array
   console.log(storedDataArray);
-  // const arrayFromJson = {data: []};
 
   if (storedDataArray.length > 0) {
-    submit.style.display = 'block';
+    submitButton.style.display = 'block';
+
+    form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
+      submitEvent.preventDefault(); // This prevents your page from refreshing!
+      console.log('form submission'); // this is substituting for a "breakpoint"
+
+      // arrayFromJson.data - we're accessing a key called 'data' on the returned object
+      // it contains all 1,000 records we need
+
+      // gives us the randomly generated restaurant list
+      currentArray = dataHandler(storedDataArray);
+      injectRandRestList(currentArray);
+      markerPlace(pageMap, currentArray);
+    });
 
     let currentArray = [];
-
-    // Restaurant Name
-    resto.addEventListener('input', async(event) => {
-      console.log(event.target.value);
-
-      if (currentArray.length < 1) {
+    restNameInput.addEventListener('input', async (e) => {
+      console.log(e.target.value);
+      // console.log(currentArray);
+      if (storedDataArray.length < 1) {
+        console.log('empy');
         return;
       }
 
-      const selectResto = storedDataArray.filter((item) => {
+      const targetRest = currentArray.filter((item) => {
+        // console.log(item.name);
         const lowerName = item.name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
-      });
+        const lowerInput = e.target.value.toLowerCase();
 
-      console.log(selectResto);
-      createHtmlList(selectResto);
+        return lowerName.includes(lowerInput);
+      });
+      console.log(targetRest);
+      injectRandRestList(targetRest);
+      markerPlace(pageMap, targetRest);
     });
 
-    // Zipcode
-    zipcode.addEventListener('input', async (event) => {
-      console.log(event.target.value);
+    zipCodeInput.addEventListener('input', (e) => {
+      console.log(e.target.value);
 
-      if (currentArray.length < 1) {
+      if (storedDataArray.length < 1) {
+        console.log('empty');
         return;
       }
-      const selectedZip = currentArray.filter((item) => {
-        const num = item.zip;
-        const zipVal = event.target.value;
-        return num.includes(zipVal);
+
+      let targetZip = currentArray.filter((item) => {
+        // console.log(item.zip);
+        return item.zip.includes(e.target.value);
       });
-      console.log(selectedZip);
-      createHtmlList(selectedZip);
-    });
 
-    form.addEventListener('submit', async (submitEvent) => {
-      submitEvent.preventDefault();
-      // console.log('form submission'); // this is substituting for a "breakpoint"
-
-      currentArray = restoArrayMake(storedDataArray);
-      console.log(currentArray);
-      createHtmlList(currentArray);
-      addMapMarkers(map, currentArray);
+      console.log(targetZip);
+      injectRandRestList(targetZip);
     });
   }
 }
-
 // this actually runs first! It's calling the function above
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
