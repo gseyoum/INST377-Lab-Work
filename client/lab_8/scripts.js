@@ -1,26 +1,23 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-template-curly-in-string */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-multi-assign */
 function getRandomIntInclusive(min, max) {
-    const newMin = Math.ceil(min);
-    const newMax = Math.floor(max);
-    return Math.floor(
-      Math.random() * (newMax - newMin + 1) + newMin
-    ); // The maximum is inclusive and the minimum is inclusive
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
   
-  function restoArrayMake(dataArray) {
-    const range = [...Array(15).keys()];
+  function dataHandler(arr) {
+    const range = [...Array(30).keys()];
     const listItems = range.map((item, index) => {
-      const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-  
-      return dataArray[restNum];
+      const restNum = getRandomIntInclusive(0, arr.length - 1);
+      return arr[restNum];
     });
-  
     return listItems;
   }
   
-  function createHtmlList(collection) {
-    const targetList = document.querySelector('#resto-list');
+  function createList(collection) {
+    console.log(collection);
+    const targetList = document.querySelector('.resto-list');
     targetList.innerHTML = '';
     collection.forEach((item) => {
       const {name} = item;
@@ -31,8 +28,8 @@ function getRandomIntInclusive(min, max) {
   }
   
   function initMap(targetId) {
-    const latLong = [38.785, -76.8721];
-    const map = L.map(targetId).setView(latLong, 13);
+    const latlong = [38.7849, -76.8721];
+    const map = L.map(targetId).setView(latlong, 13);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
@@ -53,81 +50,62 @@ function getRandomIntInclusive(min, max) {
   
     collection.forEach((item) => {
       const point = item.geocoded_column_1?.coordinates;
-      console.log(item.geocoded_column_1?.coordinates);
       L.marker([point[1], point[0]]).addTo(map);
     });
   }
   
-  // As the last step of your lab, hook this up to index.html
   async function mainEvent() { // the async keyword means we can make API requests
-    console.log('script loaded'); // substituting for a 'breakpoint'
-    const form = document.querySelector('.main_form');
-    const submit = document.querySelector('.submit_button');
+    const form = document.querySelector('.form-block');
+    const submitButton = document.querySelector('button[type="submit"]');
   
     const resto = document.querySelector('#resto_name');
     const zipcode = document.querySelector('#zipcode');
     const map = initMap('map');
     const retrievalVar = 'restaurants';
-    submit.style.display = 'none';
   
-    if (localStorage.getItem(retrievalVar) === null) {
-      const results = await fetch('/api/foodServicesPG');
-      const arrayFromJson = await results.json();
-      console.log(arrayFromJson);
+    submitButton.style.display = 'none';
+  
+    if (localStorage.getItem(retrievalVar) === undefined) {
+      const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+      const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+  
       localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
     }
   
     const storedDataString = localStorage.getItem(retrievalVar);
     const storedDataArray = JSON.parse(storedDataString);
-    console.log(storedDataArray);
-    // const arrayFromJson = {data: []};
   
     if (storedDataArray.length > 0) {
-      submit.style.display = 'block';
+      submitButton.style.display = 'block';
   
+      // eslint-disable-next-line prefer-const
       let currentArray = [];
   
-      // Restaurant Name
-      resto.addEventListener('input', async(event) => {
-        console.log(event.target.value);
+      zipcode.addEventListener('input', async (event) => {
+        const selectZip = currentArray.filter((item) => {
+          const restoZip = item.zip;
+          const zipVal = event.target.value;
+          return restoZip.includes(zipVal);
+        });
+        createList(selectZip);
+      });
   
-        if (currentArray.length < 1) {
-          return;
-        }
-  
-        const selectResto = storedDataArray.filter((item) => {
+      resto.addEventListener('input', async (event) => {
+        const selectResto = storedData.filter((item) => {
           const lowerName = item.name.toLowerCase();
           const lowerValue = event.target.value.toLowerCase();
           return lowerName.includes(lowerValue);
         });
-  
-        console.log(selectResto);
-        createHtmlList(selectResto);
+        createList(selectResto);
       });
   
-      // Zipcode
-      zipcode.addEventListener('input', async (event) => {
-        console.log(event.target.value);
-  
-        if (currentArray.length < 1) {
-          return;
-        }
-        const selectedZip = currentArray.filter((item) => {
-          const num = item.zip;
-          const zipVal = event.target.value;
-          return num.includes(zipVal);
-        });
-        console.log(selectedZip);
-        createHtmlList(selectedZip);
-      });
-  
-      form.addEventListener('submit', async (submitEvent) => {
-        submitEvent.preventDefault();
-        // console.log('form submission'); // this is substituting for a "breakpoint"
-  
-        currentArray = restoArrayMake(storedDataArray);
-        console.log(currentArray);
-        createHtmlList(currentArray);
+      form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
+        submitEvent.preventDefault(); // This prevents your page from refreshing!
+        console.log('form submission'); // this is substituting for a "breakpoint"
+        // arrayFromJson.data - we're accessing a key called 'data' on the returned object
+        // it contains all 1,000 records we need
+        currentArray = dataHandler(storedDataArray);
+        createList(currentArray);
         addMapMarkers(map, currentArray);
       });
     }
