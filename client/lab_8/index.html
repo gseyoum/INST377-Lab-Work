@@ -1,76 +1,80 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lab 8 - HTML Forms, CSS Frameworks, HTTP Methods</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="" />
-  <!-- Make sure you put this AFTER Leaflet's CSS -->
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-</head>
+    <link rel='stylesheet' href='styles.css'/>
+  </head>
+  <body>
+      
+      <div class = "grid">
+    <header class='speaker-form-header'>
+      <p>Getahun Seyoum's Lab 8</p>
+    </header>
+</div>
 
-<body>
-  <div class="wrapper">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-full" id="title">
-          Getahun Seyoum's Lab 8
+<!-- added grid underneath -->
+<div class = "grid wrapper">
+<div class="columns">
+<div class="grid container">
+    <form method='get' class='speaker-form'>
+       <!-- <div class = "grid"> -->
+        <div class='form-row'>
+            <label for='resto_name'>Restaurant Name</label>
+            <input id='resto_name' name='resto_name' type='text'/>
         </div>
-      </div>
-      <div class="next">
-        <div class="columns">
-          <div class="column is-narrow">
-            <div class="box">
-              <form action='/api' method='get' class="main_form">
-                <div class="field">
-                  <div class="form-row">
-                    <label for="name" class="name">First Name</label>
-                    <div class="control">
-                      <input id="name" class="restaurantName" name="name" type="text">
-                    </div>
-                  </div>
-                </div>
+            <div class='form-row'>
+            <label for='zipcode'>Zipcode</label>
+            <input id='zipcode' name='zipcode' type='text'/>
+          </div>
+          
+          
+          <fieldset class='legacy-form-row'>
+            <legend>Veggie or Vegan?</legend>
+            <input id='talk-type-1'
+                   name='talk-type'
+                   type='radio'
+                   value='Yes' />
+            <label for='talk-type-1' class='radio-label'>Yes</label>
+            <input id='talk-type-2'
+                   name='talk-type'
+                   type='radio'
+                   value='No'
+                    />
+            <label for='talk-type-2' class='radio-label'>No</label>
+          </fieldset>
 
-                <div class="field">
-                  <label for="food" class="food">Food Preference</label>
-                  <div class="control">
-                    <input id="food" class="foodName" name="food" type="text">
-                  </div>
-                </div>
-                <fieldset class='legacy-form-row'>
-                  <legend>Veggie or Vegan?</legend>
-                  <input id='yes' name='yes-no' type='radio' value='yes' />
-                  <label for='yes' class='radio-label'>Yes</label>
-                  <input id='no' name='yes-no' type='radio' value='no' checked />
-                  <label for='no' class='radio-label'>No</label>
-                </fieldset>
-                <div class="block">
-                  <div class='form-row'>
-                    <button class="button is-primary">Submit</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+          <div class='form-row submit_button'>
+            <button>Load List</button>
           </div>
-          <div class="column is-half">
-            <div class="box">
-              <div class="resto">
-                This will be something
-              </div>
-                <div id="map"></div>
-            </div>
-          </div>
+       
+
+
+    </form>
+    </div>
+
+  
+    <div class="wrapper grid container">
+    <header class='speaker-form-header-text'>
+        <div class="page_item_wide">
+        <div id="map"></div>
+        <h3>Restaurant List</h3>
         </div>
-      </div>
-      <script src="./script.js"></script>
-</body>
+        <ul class = 'resto-list'></ul>
+      </header>
+    </div>
+ 
 
+    </div>
+</div>
+
+<script src="script.js"></script>
+  </body>
 </html>

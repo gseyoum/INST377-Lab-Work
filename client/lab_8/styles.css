@@ -4,60 +4,195 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  background-color: darkslategray;
-}
-
 body {
   margin: 0;
   padding: 0;
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
-  ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   background-color: darkslategray;
-  min-height: 100%;
-  min-width: 100%;
 }
+
+#map { height: 360px; }
 
 /* Page Layout */
-
-#title {
-  background-color: yellow;
-  width: 100%;
-  text-align: center;
+.columns {
+  display: flex;
+  flex-wrap: wrap;
 }
-
 .wrapper {
   display: flex;
 }
-
+/*^ used for forms */
 .container {
   max-width: 960px;
   margin-top: 25px;
-  flex-wrap: wrap;
-  background-color: darkslategray;
+
+
+
+  padding: 40px;
 }
 
-.columns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35px;
-  font-family: inherit;
-  align-content: stretch;
-}
 
-.column {
-  flex-direction: column;
-}
+.grid {
+  display: grid;
+  place-items: center;
+} 
 
-.next {
-  align-items: center;
-}
-
-#map {
+.speaker-form-header {
+  background-color: #d0dfc8;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  
   width: 100%;
-  height: 600px;
+  margin: 20px 0;
+  padding: 20px;
 }
+
+.speaker-form-header p {
+  /*text-align: left;*/
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.speaker-form-header-text {
+  display: flex;
+  
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  padding: 20px;
+  
+}
+
+.page_item_wide {
+  width: 640px;
+}
+
+.speaker-form {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  padding: 50px;
+  height:fit-content;
+}
+
+.form-row {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form-row input[type='text'] {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+}
+
+.form-row label {
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 700px) {
+  .speaker-form-header {
+    width: 90%;
+  
+  }
+
+  .speaker-form {
+    width: 60%;
+  }
+  
+  .form-row {
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .form-row input[type='text'] {
+    width: 250px;
+    height: initial;
+  }
+  .form-row label {
+    margin-top: 7px;
+  }
+  .legacy-form-row {
+    margin-bottom: 10px;
+  }
+ 
+  .form-row button {
+    align-items: flex-start;
+  }
+
+  .speaker-form-header-text {
+    display: flex;
+  }
+
+}
+
+
+
+
+
+.legacy-form-row {
+  border: none;
+  margin-bottom: 40px;
+}
+
+.legacy-form-row legend {
+  margin-bottom: 15px;
+}
+
+.legacy-form-row .radio-label {
+  display: block;
+  font-size: 14px;
+  padding: 0 20px 0 10px;
+}
+
+.legacy-form-row input[type='radio'] {
+  margin-top: 2px;
+}
+  
+.legacy-form-row .radio-label,
+.legacy-form-row input[type='radio'] {
+  float: left;
+}
+
+.form-row select {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;            /* This won't work in Chrome or Safari */
+  -webkit-appearance: none;   /* This will make it work */
+}
+
+.form-row button {
+  width: 100px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: #d0dfc8;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: #76AEED;
+}
+
+.form-row button:active {
+  background-color: #407FC7;
+}
+
