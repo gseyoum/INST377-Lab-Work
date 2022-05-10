@@ -1,49 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Lab 8</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-        <link rel="stylesheet" href="styles.css"/>
-    </head>
-    <body class="wrapper">
-        <header class="header">
-            <h1>Getahun Seyoum's: Lab 8</h1>
-        </header>
-        <div class="block-container">
-            <form method="get" class="form-block">
-                    <div class="form-row">
-                        <label for="resto_name"><b>Restaurant Name</b></label>
-                    </div>
 
-                    <div class="form-row">
-                        <input id="resto_name" name="resto_name" type="text"/>
-                    </div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 8 - HTML Forms, CSS Frameworks, HTTP Methods</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+</head>
 
-                    <div class="form-row">
-                        <label for="zipcode"><b>Zipcode</b></label>
-                    </div>
-
-                    <div class="form-row">
-                        <input id="zipcode" name="zipcode" type="text"/>
-                    </div>
-                    
-                    <div class="form-row">
-                        <button type="submit">Get Restaurants</button>
-                    </div>
-            </form>
-
-            <div class="text-block text-block-wide">
-                <div id="map"></div>
-                <h2>Restaurant List</h2>
-                <ul style = "list-style: none;" class="resto-list"></ul>
-            </div>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full" id="title">
+          Getahun Seyoum's Lab 8
         </div>
-        <script src="./script.js"></script>
-    </body>
+      </div>
+      <div class="next">
+        <div class="columns">
+          <div class="column is-narrow">
+            <div class="box">
+              <form action='/api' method='get' class="main_form">
+                <div class="field">
+                  <div class="form-row">
+                    <label for="name" class="name">First Name</label>
+                    <div class="control">
+                      <input id="name" class="restaurantName" name="name" type="text">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="food" class="food">Food Preference</label>
+                  <div class="control">
+                    <input id="food" class="foodName" name="food" type="text">
+                  </div>
+                </div>
+                <fieldset class='legacy-form-row'>
+                  <legend>Veggie or Vegan?</legend>
+                  <input id='yes' name='yes-no' type='radio' value='yes' />
+                  <label for='yes' class='radio-label'>Yes</label>
+                  <input id='no' name='yes-no' type='radio' value='no' checked />
+                  <label for='no' class='radio-label'>No</label>
+                </fieldset>
+                <div class="block">
+                  <div class='form-row'>
+                    <button class="button is-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="box">
+              <div class="resto">
+                This will be something
+              </div>
+                <div id="map"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="./script.js"></script>
+</body>
+
 </html>
