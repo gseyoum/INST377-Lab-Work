@@ -1,29 +1,26 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-template-curly-in-string */
 function getRandomIntInclusive(min, max) {
     const newMin = Math.ceil(min);
     const newMax = Math.floor(max);
     return Math.floor(
       Math.random() * (newMax - newMin + 1) + newMin
-    );
+    ); // The maximum is inclusive and the minimum is inclusive
   }
   
-  // Data Handler
-  function dataHandler(dataArray) {
-    // console.log('fired dataHandler');
-    // console.table(dataArray)
+  function restoArrayMake(dataArray) {
     const range = [...Array(15).keys()];
     const listItems = range.map((item, index) => {
       const restNum = getRandomIntInclusive(0, dataArray.length - 1);
+  
       return dataArray[restNum];
     });
-      // console.log(listItems)
+  
     return listItems;
   }
   
   function createHtmlList(collection) {
-    // console.log('fired HTML creator');
-    // console.log(collection);
-    const targetList = document.querySelector('.resto-list');
-    // console.log(targetList)
+    const targetList = document.querySelector('#resto-list');
     targetList.innerHTML = '';
     collection.forEach((item) => {
       const {name} = item;
@@ -34,7 +31,7 @@ function getRandomIntInclusive(min, max) {
   }
   
   function initMap(targetId) {
-    const latLong = [38.784, -76.872];
+    const latLong = [38.785, -76.8721];
     const map = L.map(targetId).setView(latLong, 13);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -48,13 +45,12 @@ function getRandomIntInclusive(min, max) {
   }
   
   function addMapMarkers(map, collection) {
-    // remove marker
     map.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         layer.remove();
       }
     });
-    // add marker
+  
     collection.forEach((item) => {
       const point = item.geocoded_column_1?.coordinates;
       console.log(item.geocoded_column_1?.coordinates);
@@ -62,36 +58,19 @@ function getRandomIntInclusive(min, max) {
     });
   }
   
-  /*
-  function refreshList(target, storage) {
-    target.addEventListener('click', async (event) => {
-      event.preventDefault();
-      localStorage.clear();
-      const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-      const arrayFromJson = await results.json();
-      console.log('List reload complete');
-      localStorage.setItem(storage, JSON.stringify(arrayFromJson.data));
-      location.reload();
-    });
-  } */
-  
-  // Main function
+  // As the last step of your lab, hook this up to index.html
   async function mainEvent() { // the async keyword means we can make API requests
-    console.log('script loaded');
+    console.log('script loaded'); // substituting for a 'breakpoint'
     const form = document.querySelector('.main_form');
     const submit = document.querySelector('.submit_button');
   
     const resto = document.querySelector('#resto_name');
     const zipcode = document.querySelector('#zipcode');
-    // const refresh = document.querySelector('#refresh_list');
-  
     const map = initMap('map');
     const retrievalVar = 'restaurants';
     submit.style.display = 'none';
   
-    // refreshList(refresh, retrievalVar);
-    
-    if (!localStorage.getItem(retrievalVar)) {
+    if (localStorage.getItem(retrievalVar) === null) {
       const results = await fetch('/api/foodServicesPG');
       const arrayFromJson = await results.json();
       console.log(arrayFromJson);
@@ -101,15 +80,15 @@ function getRandomIntInclusive(min, max) {
     const storedDataString = localStorage.getItem(retrievalVar);
     const storedDataArray = JSON.parse(storedDataString);
     console.log(storedDataArray);
-  
     // const arrayFromJson = {data: []};
   
-    if (storedDataArray?.length > 0) {
+    if (storedDataArray.length > 0) {
       submit.style.display = 'block';
   
       let currentArray = [];
-      
-      resto.addEventListener('input', async (event) => {
+  
+      // Restaurant Name
+      resto.addEventListener('input', async(event) => {
         console.log(event.target.value);
   
         if (currentArray.length < 1) {
@@ -124,27 +103,29 @@ function getRandomIntInclusive(min, max) {
   
         console.log(selectResto);
         createHtmlList(selectResto);
-        addMapMarkers(map, selectResto);
       });
   
-      zipcode.addEventListener('input', async (events) => {
-        console.log(events.target.value);
+      // Zipcode
+      zipcode.addEventListener('input', async (event) => {
+        console.log(event.target.value);
   
         if (currentArray.length < 1) {
           return;
         }
-  
-        const selectZip = currentArray.filter((item) => item.zip.includes(events.target.value));
-  
-        console.log(selectZip);
-        createHtmlList(selectZip);
-        addMapMarkers(map, selectZip);
+        const selectedZip = currentArray.filter((item) => {
+          const num = item.zip;
+          const zipVal = event.target.value;
+          return num.includes(zipVal);
+        });
+        console.log(selectedZip);
+        createHtmlList(selectedZip);
       });
   
       form.addEventListener('submit', async (submitEvent) => {
         submitEvent.preventDefault();
-        // console.log('form submission');
-        currentArray = dataHandler(storedDataArray);
+        // console.log('form submission'); // this is substituting for a "breakpoint"
+  
+        currentArray = restoArrayMake(storedDataArray);
         console.log(currentArray);
         createHtmlList(currentArray);
         addMapMarkers(map, currentArray);
